@@ -1,6 +1,6 @@
-# 📚 AI Study Assistant (RAG) — Windows-Ready
+AI Study Assistant with (RAG)
 
-A simple end-to-end Retrieval-Augmented Generation (RAG) chatbot: upload PDFs → embed & index in Chroma → ask questions → get cited answers.  
+A simple end-to-end Retrieval-Augmented Generation chatbot using RAG: upload PDFs → embed & index in Chroma → ask questions → get cited answers.  
 Backend: FastAPI + LangChain + Chroma + sentence-transformers + Groq.  
 Frontend: Streamlit.
 
