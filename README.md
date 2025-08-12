@@ -11,7 +11,7 @@ Frontend: Streamlit.
 - **Windows 10/11** with **Python 3.10–3.12**
 - **Groq API key**
 
-> ⚠️ The default embedding model `thenlper/gte-large` is ~1.3GB. If you’re on a low-RAM machine, set `EMBEDDING_MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2` in your `.env` to speed things up (slightly lower quality).
+>   The default embedding model `thenlper/gte-large` is ~1.3GB. If you’re on a low-RAM machine, set `EMBEDDING_MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2` in your `.env` to speed things up (slightly lower quality).
 
 ---
 
