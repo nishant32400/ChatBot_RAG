@@ -1,23 +1,20 @@
-# Python virtual environments
+
 .venv/
 venv/
 
-# Environment files
 .env
 .env.example
 
-# Python cache
+
 __pycache__/
 *.pyc
 
-# Streamlit secrets
+
 .streamlit/secrets.toml
 
-# Chroma vectorstore
 Backend/vectorstore/
 Backend/logs/
 Backend/uploaded_docs/
 
-# OS files
 .DS_Store
 Thumbs.db
