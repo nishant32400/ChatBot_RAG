@@ -9,39 +9,30 @@ Frontend: Streamlit.
 ## 1) Prerequisites
 
 - **Windows 10/11** with **Python 3.10–3.12**
-- Internet access (to download models & call Groq)
-- A **Groq API key**
+- **Groq API key**
 
 > ⚠️ The default embedding model `thenlper/gte-large` is ~1.3GB. If you’re on a low-RAM machine, set `EMBEDDING_MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2` in your `.env` to speed things up (slightly lower quality).
 
 ---
 
-## 2) Quick Start (Local)
-
+## 2) Quick Start
 Open **Windows PowerShell** and run these commands step-by-step:
 
 ```powershell
-# 0) Unzip the project, then cd into it
 cd .\Chatbot_use_ai
 
-# 1) Create and activate a virtual environment
 python -m venv .venv
 .\.venv\Scripts\activate
 
-# 2) Install backend dependencies
 pip install -r Backend\requirements.txt
 
-# 3) Create a .env file with your keys (in Backend folder)
 Copy-Item Backend\.env.example Backend\.env
 # Then open Backend\.env in Notepad and paste your key/value
 
-# 4) Start the FastAPI backend (keep this window open)
 uvicorn main:app --reload --host 0.0.0.0 --port 8000 --app-dir Backend
 
-# 5) Open a NEW PowerShell window (keep backend running) and activate venv again
 .\.venv\Scripts\activate
 
-# 6) Run the Streamlit frontend
 streamlit run Frontend\app.py
 ```
 
@@ -51,7 +42,7 @@ Now open the app in your browser at: **http://localhost:8501**
 
 ## 3) Configuration
 
-Create `Backend/.env` (or set system environment variables):
+Create `Backend/.env`:
 
 ```env
 # ==== Required ====
@@ -63,7 +54,7 @@ GROQ_API_KEY=your_groq_key_here
 # LLM_MODEL_NAME=llama3-70b-8192
 ```
 
-**Where things live (relative to `Backend/`):**
+**Backend:**
 - `uploaded_docs/` — PDFs you upload via the UI
 - `vectorstore/` — persisted Chroma index
 - `logs/` — JSONL logs of Q&A
@@ -81,19 +72,8 @@ GROQ_API_KEY=your_groq_key_here
 - **Citations:** Sources shown; use [#1], [#2] in answers
 - **Logging:** JSONL for audits/analytics
 
----
 
-## 5) Troubleshooting
-
-- **`GROQ_API_KEY is not set`** → Create `Backend/.env` and add `GROQ_API_KEY=...` (or set env var). Restart backend.
-- **Slow / OOM on embeddings** → Switch to `all-MiniLM-L6-v2` in `.env`.
-- **Model downloads blocked** → Ensure firewall allows `pypi.org` and `huggingface.co`.
-- **CORS / 403** → Make sure backend runs at `http://localhost:8000` before launching Streamlit.
-- **Index not updating after new PDFs** → Click **Process Documents** again; it re-embeds and persists.
-
----
-
-## 6) Project Structure
+## 5) Project Structure
 
 ```
 Chatbot_use_ai/
@@ -125,9 +105,3 @@ Chatbot_use_ai/
   ```
 
 ---
-
-## 8) Security Notes
-
-- **Do NOT** hardcode API keys in code or commit `.env` to git.
-- Your key is read from environment variables only.
-- Logs may contain queries/answers; handle accordingly.
