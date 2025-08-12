@@ -27,7 +27,6 @@ python -m venv .venv
 pip install -r Backend\requirements.txt
 
 Copy-Item Backend\.env.example Backend\.env
-# Then open Backend\.env in Notepad and paste your key/value
 
 uvicorn main:app --reload --host 0.0.0.0 --port 8000 --app-dir Backend
 
